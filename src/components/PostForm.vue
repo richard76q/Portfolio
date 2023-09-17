@@ -3,6 +3,7 @@
         <form @submit.prevent>
             <p><strong>Создание поста</strong></p>
             <my-input
+                v-focus
                 v-model="post.title"
                 type="text"
                 placeholder="Название"

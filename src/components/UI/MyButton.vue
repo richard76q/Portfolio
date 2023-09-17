@@ -15,6 +15,6 @@
         padding: 10px 15px;
         color: teal;
         border: 1px solid teal;
-        background: #fff;
+        /* background: #fff; */
     }
 </style>
