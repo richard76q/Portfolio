@@ -1,5 +1,5 @@
 <template>
-  <select v-model="modelValue" @change="changeOption">
+  <select v-bind="modelValue" @change="changeOption">
     <option disabled value="">Выберите из списка</option>
     <option
       v-for="option in options"
@@ -15,9 +15,9 @@
 export default {
   name: 'MySelect',
   props: {
-    // modelValue: {
-    //   type: String
-    // },
+    modelValue: {
+      type: String
+    },
     options: {
       type: Array,
       default: () => []

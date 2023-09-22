@@ -5,11 +5,15 @@ export default {
             default: false
         }
     },
-    metods: {
+    methods: {
         hideDialog() {
             this.$emit('update:show', false)
         }
     },
+
+    mounted() {
+        console.log('hi from mixin');
+    }
     
     // ...
 }

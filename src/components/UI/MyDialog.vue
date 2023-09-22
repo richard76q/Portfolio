@@ -11,12 +11,10 @@ import toggleMixin from '@/mixins/toggleMixin';
 
 export default {
     name: 'MyDialog',
-    metods: {
-        hideDialog() {
-            this.$emit('update:show', false)
-        }
-    },
-    mixins: [toggleMixin]
+    mixins: [toggleMixin],
+    mounted() {
+        console.log('hi from myDialog');
+    }
 }
 </script>
 

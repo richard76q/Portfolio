@@ -1,7 +1,7 @@
 <template>
     <div class="post">
         <div>
-            <div class="">{{ post.id }}</div>
+            <div class="">{{ post.id }} кол-во лайков: {{ $store.state.likes }}</div>
             <div><strong>Название</strong> {{ post.title }} </div>
             <div><strong>Описание</strong> {{ post.body }} </div>
         </div>
@@ -36,7 +36,7 @@
 
 .post {
     padding: 15px;
-    border: 2px solid teal;
+    border: 3px solid teal;
     margin-top: 15px;
     display: flex;
     align-items: center;
