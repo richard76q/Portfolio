@@ -1,6 +1,12 @@
 <template>
+    <!-- 2:32:30 -->
     <div >
+        <h1>{{ $store.state.isAuth ? "Пользователь авторизован" : "Авторизуйтесь, что бы использовать сервис" }}</h1>
         <h1>{{ $store.state.likes }}</h1>
+        <div>
+            <MyButton @click="$store.commit('incrementLikes')">Лайк</MyButton>
+            <MyButton @click="$store.commit('decrementLikes')">Дизлайк</MyButton>
+        </div>
         <h1>Станица с постами</h1>
         <MyInput
             v-model="searchQuery"
