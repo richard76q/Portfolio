@@ -1,13 +1,14 @@
 <template>
+    <h1>{{ $store.state.post.limit }}</h1>
     <!-- 2:32:30 -->
-    <div >
-        <!-- Vuex примеры -->
-        <!-- <h1>{{ $store.state.isAuth ? "Пользователь авторизован" : "Авторизуйтесь, что бы использовать сервис" }}</h1>
-        <h1>{{ $store.state.likes }}</h1>
-        <div>
-            <MyButton @click="$store.commit('incrementLikes')">Лайк</MyButton>
-            <MyButton @click="$store.commit('decrementLikes')">Дизлайк</MyButton>
-        </div> -->
+    <!-- Vuex примеры -->
+    <!-- <h1>{{ $store.state.isAuth ? "Пользователь авторизован" : "Авторизуйтесь, что бы использовать сервис" }}</h1>
+    <h1>{{ $store.state.likes }}</h1>
+    <div>
+        <MyButton @click="$store.commit('incrementLikes')">Лайк</MyButton>
+        <MyButton @click="$store.commit('decrementLikes')">Дизлайк</MyButton>
+    </div> -->
+    <!-- <div >
         <h1>Станица с постами</h1>
         <MyInput
             v-model="searchQuery"
@@ -25,7 +26,6 @@
                 :options="sortOptions"
             />
         </div>
-        <!-- <MyButton @click="fetchPost">получить посты</MyButton> -->
         <MyDialog v-model:show="dialogVisible">
             <PostForm 
                 @create="createPost"
@@ -39,7 +39,7 @@
         />
         <div v-else>Идет загрузка...</div>
         <div v-intersection="loadMorePost" class="observer"></div>
-    </div>
+    </div> -->
 </template>
 
 <script>
@@ -79,7 +79,8 @@ export default {
         },
     },
         mounted() {
-            this.fetchPost();
+        
+        
 
             // console.log(this.$refs.observer)
         //     const options = {

@@ -1,3 +1,4 @@
+import axios from 'axios'
 
 export const postModule = {
     state: () => ({
@@ -44,6 +45,9 @@ export const postModule = {
         },
         setPage(state, page) {
             state.page = page;
+        },
+        setTotalPage(state, page) {
+            state.totalPages = page;
         }
 
     },
@@ -58,7 +62,7 @@ export const postModule = {
                     }
                 });
                 commit('setTotalPage', state.totalPages = Math.ceil(response.headers['x-total-count'] / state.limit))
-                commit('setPage', response.data;)
+                commit('setTotalPage', response.data)
             } catch(e) {
                 alert('Ошибка')
             } finally {
@@ -67,15 +71,15 @@ export const postModule = {
         },
         async loadMorePost({state, commit}) {
             try {
-                this.page += 1;
+                commit('setPosts', state.page += 1);
                 const response = await axios.get('https://jsonplaceholder.typicode.com/posts', {
                     params: {
                         _page: this.page,
                         _limit: this.limit
                     }
                 });
-                this.totalPages = Math.ceil(response.headers['x-total-count'] / this.limit)
-                this.posts = [...this.posts, ...response.data]
+                commit('setTotalPage', state.totalPages = Math.ceil(response.headers['x-total-count'] / state.limit))
+                commit('setPosts', [...this.posts, ...response.data])
             } catch(e) {
                 alert('Ошибка')
             }
