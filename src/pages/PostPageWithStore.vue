@@ -1,12 +1,13 @@
 <template>
     <!-- 2:32:30 -->
     <div >
-        <h1>{{ $store.state.isAuth ? "Пользователь авторизован" : "Авторизуйтесь, что бы использовать сервис" }}</h1>
+        <!-- Vuex примеры -->
+        <!-- <h1>{{ $store.state.isAuth ? "Пользователь авторизован" : "Авторизуйтесь, что бы использовать сервис" }}</h1>
         <h1>{{ $store.state.likes }}</h1>
         <div>
             <MyButton @click="$store.commit('incrementLikes')">Лайк</MyButton>
             <MyButton @click="$store.commit('decrementLikes')">Дизлайк</MyButton>
-        </div>
+        </div> -->
         <h1>Станица с постами</h1>
         <MyInput
             v-model="searchQuery"
@@ -62,18 +63,7 @@ export default {
     
     data() {
         return {
-            posts: [],
-            dialogVisible: false,
-            isPostsLoading: false,
-            selectedSort: '',
-            searchQuery: '',
-            page: 1,
-            limit: 10,
-            totalPages: 10,
-            sortOptions: [
-                {value: 'title', name: 'по названию'},
-                {value: 'body', name: 'по содержанию'}
-            ]
+            
         }
     },
     methods: {
@@ -87,39 +77,7 @@ export default {
         showDialog() {
             this.dialogVisible = true;
         },
-        async fetchPost() {
-            try {
-                this.isPostsLoading = true;
-                const response = await axios.get('https://jsonplaceholder.typicode.com/posts', {
-                    params: {
-                        _page: this.page,
-                        _limit: this.limit
-                    }
-                });
-                this.totalPages = Math.ceil(response.headers['x-total-count'] / this.limit)
-                this.posts = response.data;
-            } catch(e) {
-                alert('Ошибка')
-            } finally {
-                this.isPostsLoading = false;
-            }
-        },
-        async loadMorePost() {
-                try {
-                    this.page += 1;
-                    const response = await axios.get('https://jsonplaceholder.typicode.com/posts', {
-                        params: {
-                            _page: this.page,
-                            _limit: this.limit
-                        }
-                    });
-                    this.totalPages = Math.ceil(response.headers['x-total-count'] / this.limit)
-                    this.posts = [...this.posts, ...response.data]
-                } catch(e) {
-                    alert('Ошибка')
-                }
-            }
-        },
+    },
         mounted() {
             this.fetchPost();
 
@@ -141,13 +99,7 @@ export default {
         },
         
         computed: {
-            sortedPosts() {
-                return [...this.posts].sort((post1, post2) => post1[this.selectedSort]?.localeCompare(post2[this.selectedSort]))
-            },
-            
-            sortedAndSearchedPosts() {
-                return this.sortedPosts.filter(post => post.title.toLowerCase().includes(this.searchQuery.toLowerCase()))
-            }
+
         },
         
         watch: {
