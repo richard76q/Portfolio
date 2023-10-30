@@ -20,5 +20,11 @@ npm run build
 npm run lint
 ```
 
+проект был взять с канала Ulbi TV
+
+видео: Vue 3 фундаментальный курс от А до Я
+https://youtu.be/XzLuMtDelGk?si=XcoyOuTGqXx0v4GS
+
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
